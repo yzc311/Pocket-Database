@@ -7,11 +7,14 @@ class Administrator:
     员工管理-管理员相关接口
     '''
 
-
+    @classmethod
     def administrator_list(self, search=None, page=None, page_size=None, order_by=None, orientation=None):
         # 获取管理员列表
         url = f'{config.host}commer/pocket_user/list'
         params = {
+            'mock_uid': config.mock_uid,
+            'mock_uuid': config.mock_uuid,
+            '_super_': config._super_,
             'company_id': config.company_id,
             'search': search, # 搜索 （支持标题、内容、操作人）
             'page': page, # 页数，默认1
@@ -19,7 +22,7 @@ class Administrator:
             'order_by': order_by, # 排序，默认按照操作时间排序
             'orientation': orientation # 排序方向，1代表升序，0代表降序。默认0
         }
-        response = requests.get(url=url, params=params, cookies=config.cookie)
+        response = requests.get(url=url, params=params)
         if response.status_code == 200:
             return response.json()
         else:
@@ -29,6 +32,11 @@ class Administrator:
     def administrator_add(self, name, phone, auth_ids, department_id=None, id=None):
         # 添加管理员
         url = f'{config.host}commer/pocket_user/save'
+        params = {
+            'mock_uid': config.mock_uid,
+            'mock_uuid': config.mock_uuid,
+            '_super_': config._super_,
+        }
         data = {
             'company_id': config.company_id,
             'name': name, # 备注姓名，最长6个汉字
@@ -37,7 +45,7 @@ class Administrator:
             'department_id': department_id, # 部门id
             'id': id # 管理员id，更新时必填，添加时不填
         }
-        response = requests.post(url=url, data=data, cookies=config.cookie)
+        response = requests.post(url=url, params=params, data=data)
         if response.status_code == 200:
             return response.json()
         else:
@@ -47,6 +55,11 @@ class Administrator:
     def administrator_update(self, name, phone, auth_ids, department_id=None, id=None):
         # 更新管理员信息
         url = f'{config.host}commer/pocket_user/save'
+        params = {
+            'mock_uid': config.mock_uid,
+            'mock_uuid': config.mock_uuid,
+            '_super_': config._super_,
+        }
         data = {
             'company_id': config.company_id,
             'name': name, # 备注姓名，最长6个汉字
@@ -55,7 +68,7 @@ class Administrator:
             'department_id': department_id, # 部门id
             'id': id # 管理员id，更新时必填，添加时不填
         }
-        response = requests.post(url=url, data=data, cookies=config.cookie)
+        response = requests.post(url=url, params=params, data=data)
         if response.status_code == 200:
             return response.json()
         else:
@@ -66,10 +79,13 @@ class Administrator:
         # 删除管理员
         url = f'{config.host}commer/pocket_user/del'
         params = {
+            'mock_uid': config.mock_uid,
+            'mock_uuid': config.mock_uuid,
+            '_super_': config._super_,
             'company_id': config.company_id,
             'ids': ids
         }
-        response = requests.get(url=url, cookies=config.cookie, params=params)
+        response = requests.get(url=url, params=params)
         if response.status_code == 200:
             return response.json()
         else:
