@@ -1,6 +1,6 @@
 import pandas as pd
 import random
-import project_root
+from common import project_root
 
 
 class WriteUtil:

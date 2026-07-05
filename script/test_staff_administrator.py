@@ -1,5 +1,6 @@
-import pytest
 from api import staff_administrator
+from common import write_util
+from common import read_util
 
 
 class TestStaffAdministrator:
@@ -17,3 +18,21 @@ class TestStaffAdministrator:
         assert administrator_list.get('ecode') == 0
         assert administrator_list.get('emsg') == 'OK'
 
+    def test_add_administrator(self):
+        '''
+        测试添加管理员
+        '''
+        write_util.WriteUtil.write_file(10)
+        read = read_util.ReadUtil.read_file('data/data.xlsx')
+        administrator = staff_administrator.Administrator()
+
+        for _, row in read.iterrows():
+            resp = administrator.administrator_add(
+                name=row.get('names'),
+                phone=str(row.get('phones')),
+                auth_ids=read_util.ReadUtil.format_auth_ids(row.get('permission')),
+                department_id=row.get('department')
+            )
+            assert resp is not None
+            assert resp.get('ecode') == 0
+            assert resp.get('emsg') == 'OK'
