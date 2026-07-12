@@ -1,6 +1,6 @@
 import pandas as pd
 import random
-from common import project_root
+from config import BASE_DIR
 
 
 class WriteUtil:
@@ -42,7 +42,7 @@ class WriteUtil:
         生成随机权限编号
         '''
         df = pd.DataFrame({'phones': phones, 'names': names, 'department': department, 'permission': permission})
-        path = project_root.get_project_root() / 'data' / 'data.xlsx'
+        path = BASE_DIR / "data" / "data.xlsx"
         df.to_excel(path, index=False)
         return df
 

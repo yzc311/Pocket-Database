@@ -1,5 +1,5 @@
 import requests
-from common import config
+import config
 
 
 class Administrator:

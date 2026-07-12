@@ -1,5 +1,5 @@
 import requests
-from common import config
+from . import config
 
 
 class Department:
