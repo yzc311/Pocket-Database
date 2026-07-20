@@ -1,6 +1,6 @@
 import pytest
+import allure
 from api import staff_administrator
-from common import write_util
 from common import read_util
 
 
@@ -8,6 +8,11 @@ class TestStaffAdministrator:
     '''
     测试管理员
     '''
+    @allure.epic('口袋资料库')
+    @allure.feature("员工管理")
+    @allure.story("管理员")
+    @allure.title('获取管理员列表')
+    @pytest.mark.smoke
     def test_get_administrator_list(self):
         '''
         测试获取管理员列表
@@ -18,64 +23,14 @@ class TestStaffAdministrator:
         assert len(administrator_list) > 0
         assert administrator_list.get('ecode') == 0
         assert administrator_list.get('emsg') == 'OK'
-    
 
-    # def test_add_administrator(self):
-    #     '''
-    #     测试添加管理员
-    #     '''
-    #     write_util.WriteUtil.write_file(10)
-    #     read = read_util.ReadUtil.read_file('data/data.xlsx')
-    #     administrator = staff_administrator.Administrator()
-
-    #     for _, row in read.iterrows():
-    #         resp = administrator.administrator_add(
-    #             name=row.get('names'),
-    #             phone=str(row.get('phones')),
-    #             auth_ids=read_util.ReadUtil.format_auth_ids(row.get('permission')),
-    #             department_id=row.get('department')
-    #         )
-    #         assert resp is not None
-    #         if resp.get('ecode') == 1003 and resp.get('emsg') == 'phone error':
-    #             continue
-    #         assert resp.get('ecode') == 0
-    #         assert resp.get('emsg') == 'OK'
-
-
-    # @pytest.mark.parametrize("phones, names, department, permission", read_util.ReadUtil.read_excel_data('data/data.xlsx'))
-    # def test_add_administrator(self, phones, names, department, permission):
-    #     '''
-    #     测试添加管理员
-    #     '''
-    #     write_util.WriteUtil.write_file(10)
-    #     read = read_util.ReadUtil.read_excel_data('data/data.xlsx')
-    #     administrator = staff_administrator.Administrator()
-
-    #     for _, row in read.iterrows():
-    #         resp = administrator.administrator_add(
-    #             name=row.get('names'),
-    #             phone=str(row.get('phones')),
-    #             auth_ids=read_util.ReadUtil.format_auth_ids(row.get('permission')),
-    #             department_id=row.get('department')
-    #         )
-    #         assert resp is not None
-    #         if resp.get('ecode') == 1003 and resp.get('emsg') == 'phone error':
-    #             continue
-    #         assert resp.get('ecode') == 0
-    #         assert resp.get('emsg') == 'OK'
-
-
-    @pytest.mark.parametrize(
-    "phones, names, department, permission",
-    read_util.ReadUtil.read_excel_data('data/data.xlsx')
-)
-    def test_add_administrator(
-        self,
-        phones,
-        names,
-        department,
-        permission
-):
+    @allure.epic('口袋资料库')
+    @allure.feature("员工管理")
+    @allure.story("管理员")
+    @allure.title('添加管理员')
+    @pytest.mark.usefixtures("data_Change")
+    @pytest.mark.parametrize("phones, names, department, permission", read_util.ReadUtil.read_excel_data('data/data.xlsx'))
+    def test_add_administrator(self, phones, names, department, permission):
         '''
         测试添加管理员
         '''
@@ -94,4 +49,3 @@ class TestStaffAdministrator:
         assert resp.get('ecode') == 0
         assert resp.get('emsg') == 'OK'
 
-pytest.main()

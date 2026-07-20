@@ -94,7 +94,7 @@ class Administrator:
 
 if __name__ == "__main__":
     admin = Administrator()
-    # print(admin.administrator_list())
-    print(admin.administrator_add(name='测试管理员1', phone='18180873861', auth_ids='1,2,3,4', department_id=1))
+    # print(admin.administrator_list(search=187))
+    # print(admin.administrator_add(name='测试管理员1', phone='18180873861', auth_ids='1,2,3,4', department_id=1))
     # print(admin.administrator_update(name='测试管理员1-修改', phone='18888888888', auth_ids='1,2,3,4', department_id=1, id=3))
     # print(admin.administrator_delete(ids='3,4'))
