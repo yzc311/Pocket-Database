@@ -1,3 +1,183 @@
-WARNING  2026-08-12 12:29:06 [pytest_result_log:122] : ---------Start: script/test_ui_add_admin.py::TestAdmin::test_add_admin----------
-INFO     2026-08-12 12:29:08 [pytest_result_log:190] : test status is PASSED (script/test_ui_add_admin.py::TestAdmin::test_add_admin): 
-WARNING  2026-08-12 12:29:08 [pytest_result_log:128] : ----------End: script/test_ui_add_admin.py::TestAdmin::test_add_admin-----------
+WARNING  2026-08-20 13:56:05 [pytest_result_log:122] : Start: tests/tests_api/test_staff_administrator.py::TestStaffAdministrator::test_get_administrator_list
+INFO     2026-08-20 13:56:06 [pytest_result_log:190] : test status is PASSED (tests/tests_api/test_staff_administrator.py::TestStaffAdministrator::test_get_administrator_list): 
+WARNING  2026-08-20 13:56:06 [pytest_result_log:128] : End: tests/tests_api/test_staff_administrator.py::TestStaffAdministrator::test_get_administrator_list
+WARNING  2026-08-20 13:56:06 [pytest_result_log:122] : Start: tests/tests_api/test_staff_administrator.py::TestStaffAdministrator::test_add_administrator[18590594110-pgq-293-7]
+ERROR    2026-08-20 13:56:06 [pytest_result_log:190] : test status is FAILED (tests/tests_api/test_staff_administrator.py::TestStaffAdministrator::test_add_administrator[18590594110-pgq-293-7]): AssertionError
+INFO     2026-08-20 13:56:06 [pytest_result_log:194] : tests/tests_api/test_staff_administrator.py::TestStaffAdministrator::test_add_administrator[18590594110-pgq-293-7] -> self = <test_staff_administrator.TestStaffAdministrator object at 0x0000026C3D137250>, phones = 18590594110, names = 'pgq', department = 293, permission = '7'
+
+    @allure.epic('口袋资料库')
+    @allure.feature("员工管理")
+    @allure.story("管理员")
+    @allure.title('添加管理员')
+    @pytest.mark.usefixtures("data_change")
+    @pytest.mark.parametrize("phones, names, department, permission", read_util.ReadUtil.read_excel_data(config.BASE_DIR / "data" / "data.xlsx"))
+    def test_add_administrator(self, phones, names, department, permission):
+        '''
+        测试添加管理员
+        '''
+    
+        administrator = staff_administrator.Administrator()
+    
+        resp = administrator.administrator_add(
+            name=names,
+            phone=str(phones),
+            auth_ids=permission,
+            department_id=department
+        )
+    
+        assert resp is not None
+    
+>       assert resp.get('ecode') == 0
+E       AssertionError: assert 1003 == 0
+E        +  where 1003 = <built-in method get of dict object at 0x0000026C3CE73900>('ecode')
+E        +    where <built-in method get of dict object at 0x0000026C3CE73900> = {'data': {}, 'ecode': 1003, 'emsg': 'phone error'}.get
+
+tests\tests_api\test_staff_administrator.py:50: AssertionError
+WARNING  2026-08-20 13:56:06 [pytest_result_log:128] : End: tests/tests_api/test_staff_administrator.py::TestStaffAdministrator::test_add_administrator[18590594110-pgq-293-7]
+WARNING  2026-08-20 13:56:08 [pytest_result_log:122] : Start: tests/tests_api/test_staff_administrator.py::TestStaffAdministrator::test_add_administrator[18454764706-wsa-293-3,4,2,7,1,5]
+ERROR    2026-08-20 13:56:08 [pytest_result_log:190] : test status is FAILED (tests/tests_api/test_staff_administrator.py::TestStaffAdministrator::test_add_administrator[18454764706-wsa-293-3,4,2,7,1,5]): AssertionError
+INFO     2026-08-20 13:56:08 [pytest_result_log:194] : tests/tests_api/test_staff_administrator.py::TestStaffAdministrator::test_add_administrator[18454764706-wsa-293-3,4,2,7,1,5] -> self = <test_staff_administrator.TestStaffAdministrator object at 0x0000026C3D134890>, phones = 18454764706, names = 'wsa', department = 293, permission = '3,4,2,7,1,5'
+
+    @allure.epic('口袋资料库')
+    @allure.feature("员工管理")
+    @allure.story("管理员")
+    @allure.title('添加管理员')
+    @pytest.mark.usefixtures("data_change")
+    @pytest.mark.parametrize("phones, names, department, permission", read_util.ReadUtil.read_excel_data(config.BASE_DIR / "data" / "data.xlsx"))
+    def test_add_administrator(self, phones, names, department, permission):
+        '''
+        测试添加管理员
+        '''
+    
+        administrator = staff_administrator.Administrator()
+    
+        resp = administrator.administrator_add(
+            name=names,
+            phone=str(phones),
+            auth_ids=permission,
+            department_id=department
+        )
+    
+        assert resp is not None
+    
+>       assert resp.get('ecode') == 0
+E       AssertionError: assert 1003 == 0
+E        +  where 1003 = <built-in method get of dict object at 0x0000026C3D1598C0>('ecode')
+E        +    where <built-in method get of dict object at 0x0000026C3D1598C0> = {'data': {}, 'ecode': 1003, 'emsg': 'phone error'}.get
+
+tests\tests_api\test_staff_administrator.py:50: AssertionError
+WARNING  2026-08-20 13:56:08 [pytest_result_log:128] : End: tests/tests_api/test_staff_administrator.py::TestStaffAdministrator::test_add_administrator[18454764706-wsa-293-3,4,2,7,1,5]
+WARNING  2026-08-20 13:56:09 [pytest_result_log:122] : Start: tests/tests_api/test_staff_administrator.py::TestStaffAdministrator::test_add_administrator[18181141347-kfm-295-1,7,3,2]
+ERROR    2026-08-20 13:56:09 [pytest_result_log:190] : test status is FAILED (tests/tests_api/test_staff_administrator.py::TestStaffAdministrator::test_add_administrator[18181141347-kfm-295-1,7,3,2]): AssertionError
+INFO     2026-08-20 13:56:09 [pytest_result_log:194] : tests/tests_api/test_staff_administrator.py::TestStaffAdministrator::test_add_administrator[18181141347-kfm-295-1,7,3,2] -> self = <test_staff_administrator.TestStaffAdministrator object at 0x0000026C3D135290>, phones = 18181141347, names = 'kfm', department = 295, permission = '1,7,3,2'
+
+    @allure.epic('口袋资料库')
+    @allure.feature("员工管理")
+    @allure.story("管理员")
+    @allure.title('添加管理员')
+    @pytest.mark.usefixtures("data_change")
+    @pytest.mark.parametrize("phones, names, department, permission", read_util.ReadUtil.read_excel_data(config.BASE_DIR / "data" / "data.xlsx"))
+    def test_add_administrator(self, phones, names, department, permission):
+        '''
+        测试添加管理员
+        '''
+    
+        administrator = staff_administrator.Administrator()
+    
+        resp = administrator.administrator_add(
+            name=names,
+            phone=str(phones),
+            auth_ids=permission,
+            department_id=department
+        )
+    
+        assert resp is not None
+    
+>       assert resp.get('ecode') == 0
+E       AssertionError: assert 1003 == 0
+E        +  where 1003 = <built-in method get of dict object at 0x0000026C3D1F47C0>('ecode')
+E        +    where <built-in method get of dict object at 0x0000026C3D1F47C0> = {'data': {}, 'ecode': 1003, 'emsg': 'phone error'}.get
+
+tests\tests_api\test_staff_administrator.py:50: AssertionError
+WARNING  2026-08-20 13:56:09 [pytest_result_log:128] : End: tests/tests_api/test_staff_administrator.py::TestStaffAdministrator::test_add_administrator[18181141347-kfm-295-1,7,3,2]
+WARNING  2026-08-20 13:56:11 [pytest_result_log:122] : Start: tests/tests_api/test_staff_administrator.py::TestStaffAdministrator::test_add_administrator[18221919157-atq-292-7,5,3,4]
+ERROR    2026-08-20 13:56:11 [pytest_result_log:190] : test status is FAILED (tests/tests_api/test_staff_administrator.py::TestStaffAdministrator::test_add_administrator[18221919157-atq-292-7,5,3,4]): AssertionError
+INFO     2026-08-20 13:56:11 [pytest_result_log:194] : tests/tests_api/test_staff_administrator.py::TestStaffAdministrator::test_add_administrator[18221919157-atq-292-7,5,3,4] -> self = <test_staff_administrator.TestStaffAdministrator object at 0x0000026C3D135590>, phones = 18221919157, names = 'atq', department = 292, permission = '7,5,3,4'
+
+    @allure.epic('口袋资料库')
+    @allure.feature("员工管理")
+    @allure.story("管理员")
+    @allure.title('添加管理员')
+    @pytest.mark.usefixtures("data_change")
+    @pytest.mark.parametrize("phones, names, department, permission", read_util.ReadUtil.read_excel_data(config.BASE_DIR / "data" / "data.xlsx"))
+    def test_add_administrator(self, phones, names, department, permission):
+        '''
+        测试添加管理员
+        '''
+    
+        administrator = staff_administrator.Administrator()
+    
+        resp = administrator.administrator_add(
+            name=names,
+            phone=str(phones),
+            auth_ids=permission,
+            department_id=department
+        )
+    
+        assert resp is not None
+    
+>       assert resp.get('ecode') == 0
+E       AssertionError: assert 1003 == 0
+E        +  where 1003 = <built-in method get of dict object at 0x0000026C3D201500>('ecode')
+E        +    where <built-in method get of dict object at 0x0000026C3D201500> = {'data': {}, 'ecode': 1003, 'emsg': 'phone error'}.get
+
+tests\tests_api\test_staff_administrator.py:50: AssertionError
+WARNING  2026-08-20 13:56:11 [pytest_result_log:128] : End: tests/tests_api/test_staff_administrator.py::TestStaffAdministrator::test_add_administrator[18221919157-atq-292-7,5,3,4]
+WARNING  2026-08-20 13:56:13 [pytest_result_log:122] : Start: tests/tests_api/test_staff_administrator.py::TestStaffAdministrator::test_add_administrator[18819490071-yyb-291-5]
+ERROR    2026-08-20 13:56:13 [pytest_result_log:190] : test status is FAILED (tests/tests_api/test_staff_administrator.py::TestStaffAdministrator::test_add_administrator[18819490071-yyb-291-5]): AssertionError
+INFO     2026-08-20 13:56:13 [pytest_result_log:194] : tests/tests_api/test_staff_administrator.py::TestStaffAdministrator::test_add_administrator[18819490071-yyb-291-5] -> self = <test_staff_administrator.TestStaffAdministrator object at 0x0000026C3D135950>, phones = 18819490071, names = 'yyb', department = 291, permission = '5'
+
+    @allure.epic('口袋资料库')
+    @allure.feature("员工管理")
+    @allure.story("管理员")
+    @allure.title('添加管理员')
+    @pytest.mark.usefixtures("data_change")
+    @pytest.mark.parametrize("phones, names, department, permission", read_util.ReadUtil.read_excel_data(config.BASE_DIR / "data" / "data.xlsx"))
+    def test_add_administrator(self, phones, names, department, permission):
+        '''
+        测试添加管理员
+        '''
+    
+        administrator = staff_administrator.Administrator()
+    
+        resp = administrator.administrator_add(
+            name=names,
+            phone=str(phones),
+            auth_ids=permission,
+            department_id=department
+        )
+    
+        assert resp is not None
+    
+>       assert resp.get('ecode') == 0
+E       AssertionError: assert 1003 == 0
+E        +  where 1003 = <built-in method get of dict object at 0x0000026C3D2173C0>('ecode')
+E        +    where <built-in method get of dict object at 0x0000026C3D2173C0> = {'data': {}, 'ecode': 1003, 'emsg': 'phone error'}.get
+
+tests\tests_api\test_staff_administrator.py:50: AssertionError
+WARNING  2026-08-20 13:56:13 [pytest_result_log:128] : End: tests/tests_api/test_staff_administrator.py::TestStaffAdministrator::test_add_administrator[18819490071-yyb-291-5]
+WARNING  2026-08-20 13:56:14 [pytest_result_log:122] : Start: tests/tests_api/test_staff_administrator.py::TestStaffAdministrator::test_add_administrator[18307049455-hcp-296-4,5,7,1,3]
+INFO     2026-08-20 13:56:14 [pytest_result_log:190] : test status is PASSED (tests/tests_api/test_staff_administrator.py::TestStaffAdministrator::test_add_administrator[18307049455-hcp-296-4,5,7,1,3]): 
+WARNING  2026-08-20 13:56:14 [pytest_result_log:128] : End: tests/tests_api/test_staff_administrator.py::TestStaffAdministrator::test_add_administrator[18307049455-hcp-296-4,5,7,1,3]
+WARNING  2026-08-20 13:56:16 [pytest_result_log:122] : Start: tests/tests_api/test_staff_administrator.py::TestStaffAdministrator::test_add_administrator[18981410421-cem-297-5,6,7,1,3,2,4]
+INFO     2026-08-20 13:56:16 [pytest_result_log:190] : test status is PASSED (tests/tests_api/test_staff_administrator.py::TestStaffAdministrator::test_add_administrator[18981410421-cem-297-5,6,7,1,3,2,4]): 
+WARNING  2026-08-20 13:56:16 [pytest_result_log:128] : End: tests/tests_api/test_staff_administrator.py::TestStaffAdministrator::test_add_administrator[18981410421-cem-297-5,6,7,1,3,2,4]
+WARNING  2026-08-20 13:56:18 [pytest_result_log:122] : Start: tests/tests_api/test_staff_administrator.py::TestStaffAdministrator::test_add_administrator[18853632276-ayz-295-6,7,1,5,3,4,2]
+INFO     2026-08-20 13:56:18 [pytest_result_log:190] : test status is PASSED (tests/tests_api/test_staff_administrator.py::TestStaffAdministrator::test_add_administrator[18853632276-ayz-295-6,7,1,5,3,4,2]): 
+WARNING  2026-08-20 13:56:18 [pytest_result_log:128] : End: tests/tests_api/test_staff_administrator.py::TestStaffAdministrator::test_add_administrator[18853632276-ayz-295-6,7,1,5,3,4,2]
+WARNING  2026-08-20 13:56:19 [pytest_result_log:122] : Start: tests/tests_api/test_staff_administrator.py::TestStaffAdministrator::test_add_administrator[18762803366-sdl-294-2,4,1,7]
+INFO     2026-08-20 13:56:20 [pytest_result_log:190] : test status is PASSED (tests/tests_api/test_staff_administrator.py::TestStaffAdministrator::test_add_administrator[18762803366-sdl-294-2,4,1,7]): 
+WARNING  2026-08-20 13:56:20 [pytest_result_log:128] : End: tests/tests_api/test_staff_administrator.py::TestStaffAdministrator::test_add_administrator[18762803366-sdl-294-2,4,1,7]
+WARNING  2026-08-20 13:56:21 [pytest_result_log:122] : Start: tests/tests_api/test_staff_administrator.py::TestStaffAdministrator::test_add_administrator[18606231256-xqc-295-5,4,7]
+INFO     2026-08-20 13:56:21 [pytest_result_log:190] : test status is PASSED (tests/tests_api/test_staff_administrator.py::TestStaffAdministrator::test_add_administrator[18606231256-xqc-295-5,4,7]): 
+WARNING  2026-08-20 13:56:21 [pytest_result_log:128] : End: tests/tests_api/test_staff_administrator.py::TestStaffAdministrator::test_add_administrator[18606231256-xqc-295-5,4,7]

@@ -1,5 +1,6 @@
 import pytest
 import allure
+import config
 from api import staff_administrator
 from common.api_util import read_util
 
@@ -28,8 +29,8 @@ class TestStaffAdministrator:
     @allure.feature("员工管理")
     @allure.story("管理员")
     @allure.title('添加管理员')
-    @pytest.mark.usefixtures("data_Change")
-    @pytest.mark.parametrize("phones, names, department, permission", read_util.ReadUtil.read_excel_data('data/data.xlsx'))
+    @pytest.mark.usefixtures("data_change")
+    @pytest.mark.parametrize("phones, names, department, permission", read_util.ReadUtil.read_excel_data(config.BASE_DIR / "data" / "data.xlsx"))
     def test_add_administrator(self, phones, names, department, permission):
         '''
         测试添加管理员

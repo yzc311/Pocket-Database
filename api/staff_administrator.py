@@ -7,7 +7,6 @@ class Administrator:
     员工管理-管理员相关接口
     '''
 
-    @classmethod
     def administrator_list(self, search=None, page=None, page_size=None, order_by=None, orientation=None):
         # 获取管理员列表
         url = f'{config.host}commer/pocket_user/list'
@@ -30,30 +29,7 @@ class Administrator:
 
 
     def administrator_add(self, name, phone, auth_ids, department_id=None, id=None):
-        # 添加管理员
-        url = f'{config.host}commer/pocket_user/save'
-        params = {
-            'mock_uid': config.mock_uid,
-            'mock_uuid': config.mock_uuid,
-            '_super_': config._super_,
-        }
-        data = {
-            'company_id': config.company_id,
-            'name': name, # 备注姓名，最长6个汉字
-            'phone': phone, # 手机号码，也是账号
-            'auth_ids': auth_ids, # 权限id，逗号分隔；1话术权限，2资料库权限，3企业通知权限，4人员管理权限
-            'department_id': department_id, # 部门id
-            'id': id # 管理员id，更新时必填，添加时不填
-        }
-        response = requests.post(url=url, params=params, data=data)
-        if response.status_code == 200:
-            return response.json()
-        else:
-            return None
-
-
-    def administrator_update(self, name, phone, auth_ids, department_id=None, id=None):
-        # 更新管理员信息
+        # 添加管理员 & 更新管理员信息
         url = f'{config.host}commer/pocket_user/save'
         params = {
             'mock_uid': config.mock_uid,

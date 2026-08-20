@@ -1,0 +1,2 @@
+[33mWARNING [0m pytest_result_log:plugin.py:122 Start: tests/tests_api/test_staff_administrator.py::TestStaffAdministrator::test_add_administrator[18307049455-hcp-296-4,5,7,1,3]
+[33mWARNING [0m pytest_result_log:plugin.py:128 End: tests/tests_api/test_staff_administrator.py::TestStaffAdministrator::test_add_administrator[18307049455-hcp-296-4,5,7,1,3]

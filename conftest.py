@@ -1,4 +1,5 @@
 import pytest
+import config
 from api import staff_administrator
 from common.api_util import write_util
 from common.api_util import read_util
@@ -6,7 +7,7 @@ from common.ui_util.selenium_driver_util import DriverUtil
 
 
 @pytest.fixture
-def data_Change():
+def data_change():
     '''
     测试数据准备
     '''
@@ -23,7 +24,7 @@ def data_Change():
     phones = [
         row[0]
         for row in read_util.ReadUtil.read_excel_data(
-            'data/data.xlsx'
+            config.BASE_DIR / "data" / "data.xlsx"
         )
     ]
 
