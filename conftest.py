@@ -1,9 +1,8 @@
 import pytest
 from api import staff_administrator
-from common import read_util, write_util
-import os
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
+from common.api_util import write_util
+from common.api_util import read_util
+from common.ui_util.selenium_driver_util import DriverUtil
 
 
 @pytest.fixture
@@ -71,43 +70,19 @@ def data_Change():
 # 新增 Selenium fixture
 # ============================
 
-
-
 @pytest.fixture(scope="session")
 def driver():
 
-    options = Options()
+    print("启动浏览器")
 
 
-    profile_path = os.path.abspath(
-        "data/chrome_profile"
-    )
-
-
-    options.add_argument(
-        f"--user-data-dir={profile_path}"
-    )
-
-
-    driver = webdriver.Chrome(
-        options=options
-    )
-
-
-    driver.maximize_window()
-
-
-    driver.get(
-        "你的百度后台地址"
-    )
-
-
-    input(
-        "首次运行请扫码登录，完成后按回车:"
-    )
+    driver = DriverUtil.get_driver()
 
 
     yield driver
 
 
-    driver.quit()
+    print("关闭浏览器")
+
+
+    # driver.quit()

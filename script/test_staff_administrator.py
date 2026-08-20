@@ -1,7 +1,7 @@
 import pytest
 import allure
 from api import staff_administrator
-from common import read_util
+from common.api_util import read_util
 
 
 class TestStaffAdministrator:

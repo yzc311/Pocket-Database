@@ -1,5 +1,5 @@
 import requests
-from . import config
+import config
 
 
 class Employee:
@@ -12,13 +12,15 @@ class Employee:
         url = f'{config.host}commer/pocket_staff/get_data'
         params = {
             'company_id': config.company_id,
+            'mock_uid': config.mock_uid,
+            'mock_uuid': config.mock_uuid,
             'page': page, # 页码，默认值：1
             'page_size': page_size, # 每页数量，默认值：15
             'order_by': order_by, # 排序，默认按照操作时间排序
             'orientation': orientation, # 排序方向，1：升序，0：降序，默认值：0
             'auths': auths # 可阅读内容，权限id，逗号分隔，默认全部
         }
-        response = requests.get(url=url, params=params, cookies=config.cookie)
+        response = requests.get(url=url, params=params)
         if response.status_code == 200:
             return response.json() 
         else:
@@ -27,6 +29,10 @@ class Employee:
     def employee_add(self, phone, name, department_id, auth_ids, id=None, role_id=None):
         # 添加普通员工
         url = f'{config.host}commer/pocket_staff/save'
+        params = {
+            'mock_uid': config.mock_uid,
+            'mock_uuid': config.mock_uuid
+        }
         data = {
             'company_id': config.company_id,
             'name': name, # 员工姓名
@@ -36,7 +42,7 @@ class Employee:
             'id': id, # 员工id，更新时必填
             'role_id': role_id # 新版权限系统必填，1 普通员工 2 部门管理员
         }
-        response = requests.post(url=url, data=data, cookies=config.cookie)
+        response = requests.post(url=url, params=params, data=data)
         if response.status_code == 200:
             return response.json()
         else:
@@ -45,6 +51,10 @@ class Employee:
     def employee_update(self, phone, name, department_id, auth_ids, id=None, role_id=None):
         # 更新普通员工信息
         url = f'{config.host}commer/pocket_staff/save'
+        params = {
+            'mock_uid': config.mock_uid,
+            'mock_uuid': config.mock_uuid
+        }
         data = {
             'company_id': config.company_id,
             'name': name, # 员工姓名
@@ -54,7 +64,7 @@ class Employee:
             'id': id, # 员工id，更新时必填
             'role_id': role_id # 新版权限系统必填，1 普通员工 2 部门管理员
         }
-        response = requests.post(url=url, data=data, cookies=config.cookie)
+        response = requests.post(url=url, params=params, data=data)
         if response.status_code == 200:
             return response.json()
         else:
@@ -64,10 +74,12 @@ class Employee:
         # 删除普通员工
         url = f'{config.host}commer/pocket_staff/del'
         params = {
+            'mock_uid': config.mock_uid,
+            'mock_uuid': config.mock_uuid,
             'company_id': config.company_id,
             'ids': ids
         }
-        response = requests.get(url=url, cookies=config.cookie, params=params)
+        response = requests.get(url=url, params=params)
         if response.status_code == 200:
             return response.json()
         else:

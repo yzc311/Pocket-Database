@@ -1,2 +1,0 @@
-[33mWARNING [0m pytest_result_log:plugin.py:122 Start: script/test_staff_administrator.py::TestStaffAdministrator::test_add_administrator[18221919157-atq-292-7,5,3,4]
-[33mWARNING [0m pytest_result_log:plugin.py:128 End: script/test_staff_administrator.py::TestStaffAdministrator::test_add_administrator[18221919157-atq-292-7,5,3,4]

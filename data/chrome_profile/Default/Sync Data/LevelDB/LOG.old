@@ -1,3 +1,3 @@
-2026/08/07-15:37:06.116 494c Reusing MANIFEST F:\study\workspace\Pocket Database\data\chrome_profile\Default\Sync Data\LevelDB/MANIFEST-000001
-2026/08/07-15:37:06.124 494c Recovering log #3
-2026/08/07-15:37:06.125 494c Reusing old log F:\study\workspace\Pocket Database\data\chrome_profile\Default\Sync Data\LevelDB/000003.log 
+2026/08/12-12:44:51.948 98 Reusing MANIFEST F:\study\workspace\Pocket Database\data\chrome_profile\Default\Sync Data\LevelDB/MANIFEST-000001
+2026/08/12-12:44:51.974 98 Recovering log #3
+2026/08/12-12:44:51.974 98 Reusing old log F:\study\workspace\Pocket Database\data\chrome_profile\Default\Sync Data\LevelDB/000003.log 
