@@ -1,9 +1,8 @@
 import pytest
 import config
 from api import staff_administrator
-from common.api_util import write_util
-from common.api_util import read_util
-from common.ui_util.selenium_driver_util import DriverUtil
+# from common.api_util import write_util
+from common import read_util
 
 
 @pytest.fixture
@@ -64,26 +63,3 @@ def data_change():
     admins.administrator_delete(
         ids=ids_str
     )
-
-
-
-# ============================
-# 新增 Selenium fixture
-# ============================
-
-@pytest.fixture(scope="session")
-def driver():
-
-    print("启动浏览器")
-
-
-    driver = DriverUtil.get_driver()
-
-
-    yield driver
-
-
-    print("关闭浏览器")
-
-
-    # driver.quit()
